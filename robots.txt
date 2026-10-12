@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /iroha-minto/
+Sitemap: https://minatohiro-official.github.io/iroha-minto/sitemap.xml
