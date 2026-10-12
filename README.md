@@ -6,8 +6,8 @@
 
 - 指定Owner: **minatohiro-official**
 - 指定リポジトリ: **minatohiro-official/iroha-minto**
-- 公開予定URL: https://minatohiro-official.github.io/iroha-minto/
-- 2026-10-12: 指定Ownerのリポジトリに公開作業中。公開後の確認結果は追記します。
+- 公開URL: https://minatohiro-official.github.io/iroha-minto/
+- 2026-10-12: Publicリポジトリに実装をコミットし、GitHub PagesのGitHub Actionsデプロイ成功を確認。公開URLのPC表示と主要機能を検証済み。
 - 書き込み・公開先は指定リポジトリに限定しています。既存実績サイトへの変更は行っていません。
 
 ## 構成
@@ -46,12 +46,12 @@ http://localhost:8080/ へアクセス。全ページの通常リンクとアセ
 
 ## GitHub公開方法
 
-1. GitHubで **minatohiro-official** にログインしていることを確認します。
+1. minatohiro-official組織の指定リポジトリに管理権限がある認証で操作し、Ownerが **minatohiro-official** であることを確認します。
 2. `minatohiro-official/iroha-minto` が存在しなければPublicリポジトリを作成します。既存ならOwnerと内容を確認し、既存変更を保護して統合します。
 3. このフォルダのファイルをmainブランチへコミットします。`.github/workflows/pages.yml` も含めます。
 4. Settings → Pages → Build and deployment → Sourceを **GitHub Actions** に設定します。
 5. Actionsで `Publish IROHA MINTO to GitHub Pages` を実行します。
-6. 成功後、公開予定URLで全ページ・アセット・メニュー・コピー・見積もりを確認します。
+6. 成功後、公開URLで全ページ・アセット・メニュー・コピー・見積もりを確認します。
 
 ワークフローは指定リポジトリ以外では実行されません。公開アーティファクトにはHTML・assets・SEO用ファイルだけを含め、READMEや確認書類は含めません。
 
@@ -69,6 +69,6 @@ http://localhost:8080/ へアクセス。全ページの通常リンクとアセ
 
 - JS構文、ローカルファイル参照、ページ内アンカー、SEO設定、料金計算の自動検査を実施。
 - 620px・820px・1100pxのレスポンシブ設定、reduced-motion・キーボード・フォーカス配慮を実装。
-- この環境には対応するブラウザ検証機能がないため、PC/iPhone/iPadの実画面確認は未実施。公開後の実画面・JSコンソール検証が必要です。
+- 公開サイトをPC幅のブラウザで確認。ナビゲーション、FAQ開閉、スタンダードプラン引き継ぎ、オプション加算（17,780円）、月額分離（980円）、コピー成功表示、画像読み込み、横はみ出しなしを確認。iPhone/iPad実機での表示確認は未実施です。
 - ヒアリングシートのHTTP 200とページ内容は確認。実際の送信テストは未実施。
 - 受付条件・実績許可・連絡先・法的表示の確認は別添の公開前チェックリストを参照。
