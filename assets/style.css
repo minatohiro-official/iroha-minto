@@ -85,3 +85,8 @@
  .current-admin-demo iframe{display:none}.current-admin-demo>.button{width:100%;margin:0}.admin-demo-intro h1{font-size:29px;line-height:1.5}.admin-demo-intro>p{font-size:14px;line-height:1.9}.sample-notice{padding:18px 19px;font-size:13px;line-height:1.85}.demo-package-grid p{font-size:14px;line-height:1.9}.demo-gallery-item>span{font-size:15px;padding:17px}.demo-gallery-section dialog{padding:15px}.demo-gallery-section dialog button{font-size:14px}
 }
 @media(max-width:359px){.hero h1{font-size:28px}.hero-meta{gap:10px}.hero-meta>span+span{padding-left:10px}.hero-phone{top:95px}.support-grid article{padding:17px 12px}.support-grid h3{font-size:14px}.support-price{font-size:24px!important}.plan{padding:22px 19px}}
+
+/* Navigation links are visibly actionable buttons with descriptive labels. */
+.text-link{display:inline-flex;justify-content:center;align-items:center;border:1px solid #b9ccc0;border-radius:7px;background:#fff;padding:12px 18px;min-height:46px;gap:0;line-height:1.65;max-width:100%;text-align:center}
+.text-link:hover{background:var(--pale);color:var(--ink)}.button{justify-content:center;text-align:center}.work-live{border:1px solid #b9ccc0;border-radius:6px}
+@media(max-width:620px){.hero-actions .text-link{padding:12px 14px}.feature-more-link{padding:12px 18px}.work-card .text-link{width:100%}}
