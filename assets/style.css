@@ -30,7 +30,7 @@
 .hero-desktop img{display:block;width:100%;height:auto}.portfolio-site{padding:10px 14px;display:flex;justify-content:space-between;font-size:11px;font-weight:700}
 .hero-phone{position:absolute;width:30%;right:0;top:151px;padding:7px;background:#213a32;border-radius:23px;transform:rotate(7deg);box-shadow:0 18px 30px -12px #213a3270;transition:transform .3s}
 .hero-phone:hover{transform:rotate(4deg) translateY(-4px)}.portfolio-phone-screen{overflow:hidden;border-radius:17px;background:#f9e2ec}.portfolio-phone-screen img{display:block;width:100%;height:auto}.portfolio-phone-name{display:flex;justify-content:space-between;padding:9px 5px 5px;font-size:9px;color:white}
-.portfolio-view-all{position:absolute;bottom:5px;left:5%;font-size:11px;font-weight:700;border-bottom:1px solid var(--green);padding:8px 0;display:flex;gap:30px}
+.portfolio-view-all{position:absolute;bottom:-27px;left:5%;font-size:11px;font-weight:700;border-bottom:1px solid var(--green);padding:8px 0;display:flex;gap:30px}
 @media(min-width:1101px){.hero-portfolio{animation:portfolio-appear .8s ease both}@keyframes portfolio-appear{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}}
 @media(max-width:1100px){.hero-portfolio{height:360px}.hero-phone{top:123px}.hero-desktop{top:48px}.portfolio-backdrop{inset:26px -3% 20px 5%}}
 @media(max-width:820px) and (min-width:621px){.hero-portfolio{height:315px}.hero-phone{top:100px;width:32%}.portfolio-heading{font-size:9px}.hero-desktop{top:39px}.portfolio-view-all{bottom:0}}
