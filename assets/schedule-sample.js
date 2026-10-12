@@ -3,7 +3,7 @@ const WD=['日','月','火','水','木','金','土'];
 const st={start:'2026-10-12',note:'架空の予定を入れた制作サンプル',days:{}};
 const values=[['22:00','雑談',false],['21:00','歌枠',false],['','',true],['22:00','ゲーム',false],['21:00','歌枠',false],['20:00','コラボ',false],['22:00','雑談',false]];
 function ymd(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
-function dates(){return values.map((_,i)=>new Date(2026,9,12+i))}
+function dates(){const p=st.start.split('-').map(Number);return values.map((_,i)=>new Date(p[0],p[1]-1,p[2]+i))}
 function day(k){return st.days[k]}
 dates().forEach((d,i)=>{const v=values[i];st.days[ymd(d)]={time:v[0],what:v[1],off:v[2]}});
 function FF(){return '\"Zen Maru Gothic\",\"Hiragino Maru Gothic ProN\",sans-serif'}
@@ -48,6 +48,7 @@ function fontReady(){return document.fonts?document.fonts.ready:Promise.resolve(
       });
     }
 
+document.addEventListener('iroha-schedule-demo',event=>{const data=event.detail;if(!data||data.days?.length!==7)return;st.start=data.start;st.note=data.note;st.days={};dates().forEach((d,i)=>{st.days[ymd(d)]=data.days[i]});draw().then(url=>{document.querySelectorAll('[data-shii-schedule]').forEach(el=>{el.src=url;el.dataset.loaded='true'});document.dispatchEvent(new CustomEvent('iroha-schedule-ready'))})});
 let promise;
 function load(el){if(!promise)promise=draw();promise.then(url=>{el.src=url;el.dataset.loaded='true'}).catch(()=>{el.alt='予定表の画像を読み込めませんでした。再読み込みしてください。'});}
 const images=document.querySelectorAll('[data-shii-schedule]');
