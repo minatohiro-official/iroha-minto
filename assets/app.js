@@ -75,6 +75,22 @@ document.querySelectorAll('.device-preview').forEach(preview => {
   let selected = buttons.find(button => button.dataset.device === 'pc');
   let started = false;
   let loaded = false;
+  const closeButton = preview.querySelector('.preview-close');
+  function stop() {
+    if (!started) return;
+    started = false;
+    loaded = false;
+    frame.removeAttribute('src');
+    preview.querySelector('.preview-static').hidden = false;
+    preview.querySelector('.preview-live').hidden = true;
+    closeButton.hidden = true;
+    selected = buttons.find(button => button.dataset.device === 'pc');
+    buttons.forEach(button => button.setAttribute('aria-pressed', String(button === selected)));
+    status.textContent = 'PCの画面を掲載しています。ボタンから、各画面サイズのプレビューを開けます。';
+  }
+  closeButton.addEventListener('click', stop);
+  document.addEventListener('iroha-preview-start', event => { if (event.detail !== preview) stop(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); });
   function layout() {
     if (!started) return;
     const width = Number(selected.dataset.width);
@@ -94,7 +110,9 @@ document.querySelectorAll('.device-preview').forEach(preview => {
   }
   frame.addEventListener('load', () => { if (started) { loaded = true; announce(); } });
   buttons.forEach(button => button.addEventListener('click', () => {
+    document.dispatchEvent(new CustomEvent('iroha-preview-start', { detail: preview }));
     selected = button;
+    closeButton.hidden = false;
     buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
     preview.querySelector('.preview-static').hidden = true;
     preview.querySelector('.preview-live').hidden = false;
