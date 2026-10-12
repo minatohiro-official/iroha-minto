@@ -91,3 +91,5 @@
 .home .hero-feature-note{position:static;max-width:none;width:100%;transform:none;margin-top:14px;padding:14px 16px;box-shadow:none;border-radius:9px;justify-content:space-between}
 @media(max-width:820px){.home .hero-preview-actions .button{font-size:11px;padding:10px}.home .hero-feature-note{font-size:11px}.home .hero-feature-note small{font-size:10px}}
 @media(max-width:620px){.home .hero-portfolio{max-width:460px;margin:auto}.home .hero-feature-note{font-size:11px;padding:13px 14px;gap:10px}.home .portfolio-site{font-size:10px}.home .hero-phone{top:28%;right:0}.home .hero-preview-actions .button{font-size:12px}.home .portfolio-browser{height:23px}}
+
+.home .header{background:#fbfcf9}
