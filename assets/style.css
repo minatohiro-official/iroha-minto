@@ -115,3 +115,7 @@
  .plan-choice{grid-template-columns:20px minmax(0,1fr) auto;padding:17px 14px;gap:7px 10px}.plan-choice:has(input:checked){padding:16px 13px}.choice-name{font-size:15px}.choice-price{font-size:23px}.choice-description{font-size:12px}
 }
 @media(max-width:359px){.choice-name{font-size:14px}.choice-price{font-size:21px}.estimate-result .estimate-total{font-size:38px}.estimate-option strong.aligned-amount,.option-list strong.aligned-amount{font-size:15px;grid-template-columns:6ch 1em 3em}.estimate-option{gap:8px}.amount-suffix{font-size:11px}}
+
+/* Shared visual hierarchy across service, example, and estimate pages. */
+.button{border-radius:6px;font-size:14px}.page-intro h1{line-height:1.5}.page-intro p{font-size:15px}.work-case-heading h2{letter-spacing:-.02em}.feature-example,.plan,.note-box{border-radius:8px}.header nav{font-size:13px}
+@media(max-width:620px){.button{font-size:14px}.page-intro p{font-size:14px}.header nav{font-size:14px}}
