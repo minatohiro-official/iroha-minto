@@ -14,7 +14,7 @@ function fontReady(){return document.fonts?document.fonts.ready:Promise.resolve(
     var blob=null;
     function draw(){
       var F=FF();
-      return fontReady().then(function(){ return Promise.all([img('assets/schedule-shii-logo.webp'),img('assets/schedule-shii-chibi.webp'),img('assets/schedule-shii-drip.svg')]); }).then(function(im){
+      return fontReady().then(function(){ return Promise.all([img('assets/demo-logo.svg'),img('assets/demo-mascot.svg'),img('assets/demo-drip.svg')]); }).then(function(im){
         var W=1080,H=1350,c=document.createElement('canvas'),x=c.getContext('2d'); c.width=W; c.height=H;
         var g=x.createLinearGradient(0,0,0,H); g.addColorStop(0,'#FBE7EE'); g.addColorStop(1,'#EFC3D2'); x.fillStyle=g; x.fillRect(0,0,W,H);
         x.fillStyle='rgba(255,255,255,.6)'; for(var y=18;y<H;y+=36) for(var xx=18+(y/36%2)*18;xx<W;xx+=36){ x.beginPath(); x.arc(xx,y,2.6,0,7); x.fill(); }
@@ -42,7 +42,7 @@ function fontReady(){return document.fonts?document.fonts.ready:Promise.resolve(
         });
         var by=top+7*(rh+gap)+8;
         if(st.note){ x.fillStyle='#fff'; rr(x,X,by,RW-220,74,37); x.fill(); x.fillStyle='#C9557B'; x.font='700 34px '+F; x.textAlign='left'; x.fillText(fit(x,'♡ '+st.note,RW-280),X+30,by+49); }
-        x.textAlign='left'; x.fillStyle='#8E5C69'; x.font='700 28px '+F; x.fillText('Mirrativ ／ X @shiitarou210',X+4,H-34);
+        x.textAlign='left'; x.fillStyle='#8E5C69'; x.font='700 28px '+F; x.fillText('DEMO ／ 架空の週間予定表',X+4,H-34);
         if(im[1]){ var ch=190, cw=im[1].width*ch/im[1].height; x.drawImage(im[1],W-cw-40,H-ch-16,cw,ch); }
         return new Promise(function(ok){ c.toBlob(function(bb){ blob=bb; ok(URL.createObjectURL(bb)); },'image/png'); });
       });
