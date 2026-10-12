@@ -127,3 +127,12 @@ document.querySelectorAll('.device-preview').forEach(preview => {
   if ('ResizeObserver' in window) new ResizeObserver(layout).observe(stage);
   else window.addEventListener('resize', layout);
 });
+
+// Keep plan details open on larger screens and compact on phones.
+const planDetails = [...document.querySelectorAll('.plan-inclusions')];
+if (planDetails.length) {
+  const phonePlans = window.matchMedia('(max-width: 620px)');
+  const syncPlanDetails = () => { planDetails.forEach(detail => { detail.open = !phonePlans.matches; }); };
+  syncPlanDetails();
+  phonePlans.addEventListener?.('change', syncPlanDetails);
+}
