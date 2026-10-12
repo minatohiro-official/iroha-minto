@@ -26,6 +26,16 @@ if (estimateForm) {
   const format = number => number.toLocaleString('ja-JP');
   const queryPlan = new URLSearchParams(window.location.search).get('plan');
   if (['0', '1', '2'].includes(queryPlan)) plan.value = queryPlan;
+  const planChoices = document.querySelector('#plan-choices');
+  if (planChoices) {
+    const radios = [...planChoices.querySelectorAll('input[name="plan-choice"]')];
+    radios.forEach(radio => {
+      radio.checked = radio.value === plan.value;
+      radio.addEventListener('change', () => { if (radio.checked) plan.value = radio.value; });
+    });
+    document.querySelector('#plan-select-fallback').hidden = true;
+    planChoices.hidden = false;
+  }
   let summaryText = '';
   function calculate() {
     const index = Number(plan.value);
