@@ -64,3 +64,48 @@ if (estimateForm) {
   });
   calculate();
 }
+
+// Lazy, real-site device previews. Each iframe receives the selected viewport width.
+document.querySelectorAll('.device-preview').forEach(preview => {
+  const buttons = [...preview.querySelectorAll('[data-device][data-width]')];
+  const stage = preview.querySelector('.preview-stage');
+  const device = preview.querySelector('.preview-device');
+  const frame = preview.querySelector('iframe');
+  const status = preview.querySelector('.preview-status');
+  let selected = buttons.find(button => button.dataset.device === 'pc');
+  let started = false;
+  let loaded = false;
+  function layout() {
+    if (!started) return;
+    const width = Number(selected.dataset.width);
+    const height = Number(selected.dataset.height);
+    const border = selected.dataset.device === 'phone' ? 10 : selected.dataset.device === 'pc' ? 6 : 9;
+    const scale = Math.min(1, Math.max(0.1, (stage.clientWidth - 36) / (width + border * 2)));
+    frame.style.width = `${width}px`;
+    frame.style.height = `${height}px`;
+    device.style.width = `${width}px`;
+    device.style.height = `${height}px`;
+    device.dataset.device = selected.dataset.device;
+    device.style.transform = `translateX(-${(width + border * 2) * scale / 2}px) scale(${scale})`;
+    stage.style.height = `${(height + border * 2) * scale + 40}px`;
+  }
+  function announce() {
+    status.textContent = loaded ? `${selected.textContent}の画面サイズで表示中です。プレビュー内をスクロールしてご覧ください。` : '実際のサイトを読み込んでいます。表示されない場合は「別タブでサイトを開く」をご利用ください。';
+  }
+  frame.addEventListener('load', () => { if (started) { loaded = true; announce(); } });
+  buttons.forEach(button => button.addEventListener('click', () => {
+    selected = button;
+    buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    preview.querySelector('.preview-static').hidden = true;
+    preview.querySelector('.preview-live').hidden = false;
+    if (!started) {
+      started = true;
+      frame.src = preview.dataset.site;
+      frame.loading = 'eager';
+    }
+    layout();
+    announce();
+  }));
+  if ('ResizeObserver' in window) new ResizeObserver(layout).observe(stage);
+  else window.addEventListener('resize', layout);
+});
