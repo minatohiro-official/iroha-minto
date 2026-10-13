@@ -74,8 +74,8 @@
  .home .hero-actions{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:9px;margin:8px 0 10px}.home .hero-actions .button{min-height:48px;font-size:13px;padding:12px 8px}.home .hero-terms{font-size:11px;line-height:1.8}
 }
 
-/* Brand promise, kept separate from the compact first view. */
-.home .brand-story{display:grid;grid-template-columns:1fr 1.25fr;gap:45px;background:var(--pale);border-bottom:1px solid var(--line)}
-.home .brand-story .section-heading{margin:0}.home .brand-story .section-heading h2{font-size:29px}.brand-acrostic{margin:0}.brand-acrostic>div{display:grid;grid-template-columns:48px 1fr;gap:18px;align-items:baseline;padding:14px 0;border-bottom:1px solid #315f5326}.brand-acrostic>div:first-child{padding-top:0}.brand-acrostic>div:last-child{border-bottom:0;padding-bottom:0}.brand-acrostic dt{font-size:22px;font-weight:800;color:var(--green);letter-spacing:-.04em}.brand-acrostic dd{margin:0;font-size:17px;line-height:1.8;font-weight:600}
-@media(max-width:820px){.home .brand-story{grid-template-columns:1fr;gap:24px}.brand-acrostic dd{font-size:16px}}
-@media(max-width:620px){.brand-acrostic>div{grid-template-columns:39px 1fr;gap:12px;padding:12px 0}.brand-acrostic dt{font-size:20px}.brand-acrostic dd{font-size:15px}.home .brand-story .section-heading h2{font-size:26px}}
+/* A short brand message, separate from service details. */
+.home .brand-story{display:grid;grid-template-columns:1fr 1.25fr;gap:40px;align-items:center;background:var(--pale);border-bottom:1px solid var(--line)}
+.home .brand-story .section-heading{margin:0}.home .brand-story .section-heading h2{font-size:29px;margin:0}.brand-message{margin:0;font-size:18px;line-height:2;color:var(--ink)}
+@media(max-width:820px){.home .brand-story{grid-template-columns:1fr;gap:20px}.brand-message{font-size:16px}}
+@media(max-width:620px){.home .brand-story .section-heading h2{font-size:26px}.brand-message{font-size:15px;line-height:2}}
