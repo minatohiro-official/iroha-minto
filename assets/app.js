@@ -43,6 +43,10 @@ if (estimateForm) {
     const freeCounts = [4, 6, Infinity];
     const freeEligible = selected.filter(option => option.dataset.standard === 'true');
     const freeSet = new Set(freeEligible.slice(0, freeCounts[index]));
+    options.filter(option => option.dataset.standard === 'true').forEach(option => {
+      const included = freeSet.has(option) || (!option.checked && freeEligible.length < freeCounts[index]);
+      option.closest('label').querySelector('strong').textContent = included ? '追加料金なし' : '追加500円';
+    });
     const rows = [[names[index], prices[index]], ...selected.map(option => {
       if (freeSet.has(option)) return [option.dataset.label + '（制作時無料枠）', 0];
       return [option.dataset.label, option.value === '' ? null : Number(option.value)];
