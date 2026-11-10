@@ -42,7 +42,7 @@ if (estimateForm) {
     const selected = options.filter(option => option.checked);
     const rows = [[names[index], prices[index]], ...selected.map(option => [option.dataset.label, Number(option.value)])];
     const freeCounts = [2, 5, Infinity];
-    const freeEligible = selected.filter(option => !option.dataset.variable || option.dataset.variable !== 'true');
+    const freeEligible = selected.filter(option => /お問い合わせフォーム|SNS|動画|アニメーション|ギャラリー|ブログ|お知らせ|FAQ|スケジュール|イベント/.test(option.dataset.label || ''));
     const freeSet = new Set(freeEligible.slice(0, freeCounts[index]));
     const billedRows = [[names[index], prices[index]], ...selected.map(option => [option.dataset.label + (freeSet.has(option) ? '（制作時無料枠）' : ''), freeSet.has(option) ? 0 : Number(option.value)])];
     rows.splice(0, rows.length, ...billedRows);
