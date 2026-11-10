@@ -18,7 +18,7 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
 }
 const estimateForm = document.querySelector('#estimate-form');
 if (estimateForm) {
-  const prices = [4980, 12800, 24800];
+  const prices = [1900, 4900, 9800];
   const names = ['ライト', 'スタンダード', 'プレミアム'];
   const plan = document.querySelector('#plan');
   const support = document.querySelector('#support');
@@ -41,6 +41,11 @@ if (estimateForm) {
     const index = Number(plan.value);
     const selected = options.filter(option => option.checked);
     const rows = [[names[index], prices[index]], ...selected.map(option => [option.dataset.label, Number(option.value)])];
+    const freeCounts = [2, 5, Infinity];
+    const freeEligible = selected.filter(option => !option.dataset.variable || option.dataset.variable !== 'true');
+    const freeSet = new Set(freeEligible.slice(0, freeCounts[index]));
+    const billedRows = [[names[index], prices[index]], ...selected.map(option => [option.dataset.label + (freeSet.has(option) ? '（制作時無料枠）' : ''), freeSet.has(option) ? 0 : Number(option.value)])];
+    rows.splice(0, rows.length, ...billedRows);
     const total = rows.reduce((sum, row) => sum + row[1], 0);
     document.querySelector('#total').textContent = format(total);
     document.querySelector('#monthly').textContent = format(Number(support.value));
@@ -55,7 +60,7 @@ if (estimateForm) {
     const variable = selected.some(option => option.dataset.variable === 'true');
     document.querySelector('#estimate-variable').textContent = variable ? '「〜」の項目は最低参考価格で計算しています。独自ドメイン等の実費は別途必要です。' : '詳細な仕様・作業量により金額が変わる場合があります。';
     document.querySelector('#copy-status').textContent = '';
-    summaryText = ['イロハミント 概算見積もり（税込）', ...rows.map(([label, value]) => `${label}: ${format(value)}円`), `制作費目安: ${format(total)}円`, `任意の月額サポート: ${format(Number(support.value))}円 / 月`, '各オプション1件分。実費別途。正式見積もり・契約金額ではありません。受付準備中。'].join('\n');
+    summaryText = ['イロハミント 概算見積もり（税込）', ...rows.map(([label, value]) => `${label}: ${format(value)}円`), `制作費目安: ${format(total)}円`, `任意の月額サポート: ${format(Number(support.value))}円 / 月`, '制作時の標準追加機能は無料枠を適用。実費別途。正式見積もり・契約金額ではありません。受付準備中。'].join('\n');
   }
   estimateForm.addEventListener('change', calculate);
   estimateForm.addEventListener('submit', event => event.preventDefault());
