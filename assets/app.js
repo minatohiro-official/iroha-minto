@@ -40,7 +40,7 @@ if (estimateForm) {
   function calculate() {
     const index = Number(plan.value);
     const selected = options.filter(option => option.checked);
-    const freeCounts = [3, 6, Infinity];
+    const freeCounts = [4, 6, Infinity];
     const freeEligible = selected.filter(option => option.dataset.standard === 'true');
     const freeSet = new Set(freeEligible.slice(0, freeCounts[index]));
     const rows = [[names[index], prices[index]], ...selected.map(option => {
