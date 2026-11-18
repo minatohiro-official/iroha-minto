@@ -88,9 +88,11 @@
 .showcase-right{left:auto;right:2%;transform:rotate(7deg)}
 .home .work-image-link{display:flex;justify-content:center;padding:26px 0 22px}
 .home .work-phone{width:min(62%,210px);border:6px solid #213a32;border-radius:24px;overflow:hidden;background:#213a32;box-shadow:0 16px 30px -12px #213a3250}
-.home .work-phone img{display:block;width:100%;height:auto;aspect-ratio:5/8;object-fit:cover;object-position:top;border-radius:17px}
+.home .work-phone img{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;object-position:top;border-radius:17px}
 @media(max-width:820px){.home .work-card{align-items:center}.home .work-image-link{padding:18px 0}.home .work-phone{width:min(78%,190px)}}
 @media(max-width:620px){.home .work-card{display:flex;flex-direction:column}.home .work-phone{width:min(56%,200px)}.showcase-side{top:34px;border-width:4px;border-radius:15px}}
 .showcase-side{width:30%;left:0}
 .showcase-right{left:auto;right:0}
-.hero-showcase .showcase-phone:not(.showcase-side){width:42%}
+.hero-showcase .showcase-phone:not(.showcase-side){width:38%}
+
+.showcase-side{top:60px}
