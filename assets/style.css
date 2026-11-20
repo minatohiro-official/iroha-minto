@@ -127,3 +127,8 @@
 .open-price-list s{color:#64736b;font-size:.9em}
 .open-price-list strong{font-size:1.2em;color:#234b40}
 .open-price-list.compact{margin:10px 0 0}
+.open-price-list li{display:grid;grid-template-columns:7em 1fr;align-items:baseline;gap:4px 8px;padding:10px 12px}
+.open-price-list .price-change{justify-content:flex-end;gap:6px}
+.open-price-list strong{font-size:1.1em}
+.open-price-list s{font-size:.85em}
+@media (max-width:370px){.open-price-list li{grid-template-columns:1fr}.open-price-list .price-change{justify-content:flex-start}}
