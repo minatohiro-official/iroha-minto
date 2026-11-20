@@ -119,3 +119,11 @@
 /* Shared visual hierarchy across service, example, and estimate pages. */
 .button{border-radius:6px;font-size:14px}.page-intro h1{line-height:1.5}.page-intro p{font-size:15px}.work-case-heading h2{letter-spacing:-.02em}.feature-example,.plan,.note-box{border-radius:8px}.header nav{font-size:13px}
 @media(max-width:620px){.button{font-size:14px}.page-intro p{font-size:14px}.header nav{font-size:14px}}
+
+.open-price-list{list-style:none;margin:14px 0;padding:0;display:grid;gap:8px}
+.open-price-list li{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 12px;padding:10px 14px;border-radius:12px;background:#fff;border:1px solid rgba(49,95,83,.18)}
+.open-price-list .plan-name{font-weight:700;white-space:nowrap}
+.open-price-list .price-change{display:inline-flex;align-items:baseline;gap:8px;white-space:nowrap}
+.open-price-list s{color:#64736b;font-size:.9em}
+.open-price-list strong{font-size:1.2em;color:#234b40}
+.open-price-list.compact{margin:10px 0 0}
