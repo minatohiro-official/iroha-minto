@@ -96,3 +96,8 @@
 .hero-showcase .showcase-phone:not(.showcase-side){width:38%}
 
 .showcase-side{top:60px}
+
+.site-feature-image.top img{object-fit:cover;object-position:top center}
+.site-feature-copy .example-label{display:block;margin:0 0 8px;font-size:12px;color:var(--muted)}
+.site-feature-image.top{position:relative;overflow:hidden;min-height:0}
+.site-feature-image.top img{position:absolute;inset:15px;width:calc(100% - 30px);height:calc(100% - 30px)}
