@@ -24,7 +24,3 @@ html.op-on #opening.op-out{opacity:0;transform:scale(1.06);pointer-events:none}
 @keyframes op-fade{to{opacity:1}}
 @keyframes op-pulse{0%,100%{box-shadow:0 0 0 0 rgba(49,95,83,.45)}60%{box-shadow:0 0 0 14px rgba(49,95,83,0)}}
 @media (prefers-reduced-motion:reduce){html.op-on #opening{display:none}html.op-on body{overflow:auto}}
-.op-chara{position:absolute;right:7%;bottom:calc(100% - 5px);width:auto;height:clamp(150px,27vh,260px);pointer-events:none;transform-origin:50% 100%;opacity:0;filter:drop-shadow(0 8px 14px rgba(33,58,50,.25));animation:op-pop .7s cubic-bezier(.3,1.6,.5,1) 1.35s forwards,op-hop 2.4s ease-in-out 2.1s infinite}
-.op-card .op-chara{width:auto;height:clamp(140px,25vh,240px)}
-@keyframes op-pop{from{opacity:0;transform:translateY(40px) scale(.4)}to{opacity:1;transform:none}}
-@keyframes op-hop{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-9px) rotate(2deg)}}
