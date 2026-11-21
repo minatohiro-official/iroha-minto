@@ -132,3 +132,13 @@
 .open-price-list strong{font-size:1.1em}
 .open-price-list s{font-size:.85em}
 @media (max-width:370px){.open-price-list li{grid-template-columns:1fr}.open-price-list .price-change{justify-content:flex-start}}
+
+.legal-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.legal-table th,.legal-table td{padding:16px 18px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);line-height:1.8;font-size:15px}
+.legal-table tr:last-child th,.legal-table tr:last-child td{border-bottom:0}
+.legal-table th{width:200px;background:var(--pale);color:var(--green);font-weight:700}
+@media (max-width:700px){.legal-table,.legal-table tbody,.legal-table tr,.legal-table th,.legal-table td{display:block;width:100%}.legal-table th{border-bottom:0;padding-bottom:6px}.legal-table td{padding-top:6px}}
+.legal-table{min-width:0}
+.legal-table td{min-width:0}
+.legal-table th,.legal-table td{overflow-wrap:anywhere;font-size:14px}
+@media (max-width:700px){.legal-table th,.legal-table td{padding-left:16px;padding-right:16px;font-size:14px}}
