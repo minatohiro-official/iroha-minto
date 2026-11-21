@@ -5,12 +5,14 @@
   if (!el || !root.classList.contains('op-on')) return;
   // Every screen shown as a phone screen, each exactly once per loop. [file, object-position]
   var S = [
-    ['phone-shii.webp','50% 0'],['phone-reeka.webp','50% 0'],['phone-mogu.webp','50% 0'],['feature-songsearch.webp','50% 0'],
-    ['phone-ante.webp','50% 0'],['feature-stamp.webp','50% 0'],['phone-hiro.webp','50% 0'],['feature-gallery.webp','50% 0'],
-    ['feature-profilecard.webp','50% 0'],['work-shii.webp','46% 0'],['work-hiro.webp','80% 0'],['work-mogu.webp','74% 0']
+    ['phone-shii.webp','50% 0'],['phone-reeka.webp','50% 0'],['phone-mogu.webp','50% 0'],['phone-ante.webp','50% 0'],
+    ['feature-stamp.webp','50% 0'],['phone-hiro.webp','50% 0'],['feature-songsearch.webp','50% 0'],['feature-gallery.webp','50% 0']
   ];
   var vw = window.innerWidth, vh = window.innerHeight, mobile = vw < 700, gap = Math.max(12, Math.min(24, vw * 0.014));
-  function pwFor(n) { return mobile ? vw * 0.36 : Math.max(150, Math.min(vw * (n === 4 ? 0.2 : 0.26), 360)); }
+  function pwFor(n) {
+    if (mobile) return vw * (n === 3 ? 0.36 : 0.45);
+    return Math.max(150, Math.min(vw * (n === 4 ? 0.2 : n === 3 ? 0.27 : 0.34), n === 4 ? 360 : n === 3 ? 440 : 480));
+  }
   var n = mobile ? 3 : 4;
   // pick the column count so one loop is taller than the screen (no repeated screen visible at once)
   function span(k) { return Math.floor(S.length / k) * (pwFor(k) * 16 / 9 + gap + 8); }
