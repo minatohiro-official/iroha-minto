@@ -3,24 +3,32 @@
   var root = document.documentElement;
   var el = document.getElementById('opening');
   if (!el || !root.classList.contains('op-on')) return;
-  // Hand-picked, full-frame screens only. [file, w, h, x%, y%, width(vw), rotate(deg)]
-  var PC = [
-    ['work-shii.webp',1200,824, 17,22, 23,-5], ['work-mogu.webp',1200,824, 83,22, 23,5], ['work-hiro.webp',1200,824, 50,12, 18,0],
-    ['phone-shii.webp',400,711, 8,64, 12,-4], ['phone-mogu.webp',400,711, 24,74, 12,5], ['feature-stamp.webp',445,479, 26,43, 12,3],
-    ['phone-ante.webp',400,711, 92,64, 12,4], ['phone-reeka.webp',400,640, 76,74, 12,-5], ['feature-profilecard.webp',640,1157, 74,43, 10,-3],
-    ['phone-hiro.webp',400,640, 41,85, 10,-2], ['feature-songsearch.webp',640,927, 59,85, 9,3]
+  // Every screen shown as a phone screen, each exactly once per loop. [file, object-position]
+  var S = [
+    ['phone-shii.webp','50% 0'],['phone-reeka.webp','50% 0'],['phone-mogu.webp','50% 0'],['feature-songsearch.webp','50% 0'],
+    ['phone-ante.webp','50% 0'],['feature-stamp.webp','50% 0'],['phone-hiro.webp','50% 0'],['feature-gallery.webp','50% 0'],
+    ['feature-profilecard.webp','50% 0'],['work-shii.webp','46% 0'],['work-hiro.webp','80% 0'],['work-mogu.webp','74% 0']
   ];
-  var SP = [
-    ['phone-shii.webp',400,711, 20,17, 27,-5], ['phone-ante.webp',400,711, 50,13, 27,0], ['phone-reeka.webp',400,640, 80,17, 27,5],
-    ['phone-mogu.webp',400,711, 20,83, 27,4], ['phone-hiro.webp',400,640, 50,86, 27,0], ['feature-songsearch.webp',640,927, 80,83, 27,-4]
-  ];
-  var list = window.innerWidth < 700 ? SP : PC;
-  var card = el.querySelector('.op-card');
-  list.forEach(function (t, i) {
-    var d = document.createElement('div'); d.className = 'op-tile';
-    d.style.cssText = 'left:' + t[3] + '%;top:' + t[4] + '%;width:' + t[5] + 'vw;--r:' + t[6] + 'deg;--d:' + (0.1 + i * 0.08).toFixed(2) + 's;--dx:' + ((t[3] - 50) * 6) + 'px;--dy:' + ((t[4] - 50) * 6) + 'px';
-    var im = new Image(); im.src = 'assets/' + t[0]; im.width = t[1]; im.height = t[2]; im.alt = ''; im.decoding = 'async';
-    d.appendChild(im); el.insertBefore(d, card);
+  var vw = window.innerWidth, vh = window.innerHeight, mobile = vw < 700, gap = Math.max(12, Math.min(24, vw * 0.014));
+  function pwFor(n) { return mobile ? vw * 0.36 : Math.max(150, Math.min(vw * (n === 4 ? 0.2 : 0.26), 360)); }
+  var n = mobile ? 3 : 4;
+  // pick the column count so one loop is taller than the screen (no repeated screen visible at once)
+  function span(k) { return Math.floor(S.length / k) * (pwFor(k) * 16 / 9 + gap + 8); }
+  while (n > 2 && span(n) < vh * 1.35) n--;
+  var pw = pwFor(n), tileH = pw * 16 / 9 + gap;
+  var wall = el.querySelector('.op-wall'); wall.style.setProperty('--gap', gap + 'px');
+  var cols = [];
+  for (var c = 0; c < n; c++) { var col = document.createElement('div'); col.className = 'op-col' + (c % 2 ? ' rev' : ''); col.style.width = pw + 'px'; var tr = document.createElement('div'); tr.className = 'op-track'; col.appendChild(tr); wall.appendChild(col); cols.push(tr); }
+  var counts = new Array(n).fill(0);
+  S.forEach(function (t, i) { counts[i % n]++; });
+  for (var rep = 0; rep < 2; rep++) S.forEach(function (t, i) {
+    var ph = document.createElement('div'); ph.className = 'op-ph'; ph.style.setProperty('--op', t[1]);
+    var im = new Image(); im.src = 'assets/' + t[0]; im.alt = ''; im.decoding = 'async'; ph.appendChild(im);
+    cols[i % n].appendChild(ph);
+  });
+  cols.forEach(function (tr, c) {
+    var dur = Math.max(20, counts[c] * (pw * 16 / 9 + gap) / 42);
+    tr.style.animationDuration = dur + 's'; tr.style.animationDelay = (-dur * ((c * 0.37) % 1)) + 's';
   });
   var done = false;
   function finish() {
@@ -29,6 +37,5 @@
     setTimeout(function () { root.classList.remove('op-on'); el.remove(); }, 900);
   }
   el.addEventListener('click', finish);
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' || e.key === 'Enter') finish(); });
-  setTimeout(finish, 3500);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') finish(); });
 })();

@@ -1,20 +1,26 @@
-/* Opening animation (top page only). Shown once per browser session. */
+/* Opening animation (top page only). Shown once per browser session; stays until tapped. */
 #opening{display:none}
 html.op-on #opening{display:block;position:fixed;inset:0;z-index:1000;cursor:pointer;overflow:hidden;
   background:radial-gradient(60% 70% at 18% 20%,rgba(139,207,178,.35),transparent 70%),radial-gradient(55% 65% at 85% 85%,rgba(184,224,205,.55),transparent 70%),linear-gradient(160deg,#f6fbf8,#e0f0e8);
-  transition:opacity .7s ease,transform .8s cubic-bezier(.6,0,.2,1);animation:op-failsafe 0s 6s forwards}
+  transition:opacity .7s ease,transform .8s cubic-bezier(.6,0,.2,1)}
 html.op-on body{overflow:hidden}
 html.op-on #opening.op-out{opacity:0;transform:scale(1.06);pointer-events:none}
-.op-tile{position:absolute;transform:translate(-50%,-50%) rotate(var(--r));opacity:0;animation:op-in .95s cubic-bezier(.2,.85,.2,1) var(--d) forwards}
-.op-tile img{display:block;width:100%;height:auto;border-radius:clamp(9px,1.2vw,16px);background:#fff;box-shadow:0 18px 40px rgba(33,58,50,.24),0 0 0 1px rgba(255,255,255,.8);animation:op-float 3.2s ease-in-out var(--d) infinite alternate}
-.op-card{position:absolute;left:50%;top:50%;z-index:5;transform:translate(-50%,-46%) scale(.86);opacity:0;filter:blur(8px);display:flex;flex-direction:column;align-items:center;gap:14px;padding:clamp(24px,4vw,38px) clamp(26px,5vw,52px);border-radius:26px;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 28px 70px rgba(33,58,50,.28),0 0 0 1px rgba(255,255,255,.9);text-align:center;animation:op-card .9s cubic-bezier(.2,.9,.2,1) 1.15s forwards;max-width:88vw}
+.op-wall{position:absolute;left:-30%;right:-30%;top:-35%;bottom:-35%;display:flex;justify-content:center;gap:var(--gap,18px);transform:rotate(-9deg) scale(1.1);opacity:0;animation:op-wall-in 1s cubic-bezier(.2,.7,.2,1) forwards}
+.op-col{height:100%;overflow:hidden;flex:none}
+.op-track{will-change:transform;animation:op-slide linear infinite}
+.op-col.rev .op-track{animation-direction:reverse}
+.op-ph{display:block;aspect-ratio:9/16;margin-bottom:var(--gap,18px);padding:clamp(3px,.4vw,5px);border-radius:clamp(16px,2vw,26px);background:linear-gradient(145deg,#2b3a34,#111a16);box-shadow:0 16px 36px rgba(33,58,50,.26),0 0 0 1px rgba(255,255,255,.55)}
+.op-ph img{display:block;width:100%;height:100%;object-fit:cover;object-position:var(--op,50% 0);border-radius:clamp(13px,1.6vw,21px);background:#fff}
+.op-wall::after{content:"";position:absolute;inset:0;background:radial-gradient(40% 32% at 50% 50%,rgba(244,250,247,.85),rgba(244,250,247,0))}
+.op-card{position:absolute;left:50%;top:50%;z-index:5;transform:translate(-50%,-46%) scale(.86);opacity:0;filter:blur(8px);display:flex;flex-direction:column;align-items:center;gap:14px;padding:clamp(24px,4vw,38px) clamp(26px,5vw,52px);border-radius:26px;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 28px 70px rgba(33,58,50,.28),0 0 0 1px rgba(255,255,255,.9);text-align:center;animation:op-card .9s cubic-bezier(.2,.9,.2,1) .9s forwards;max-width:88vw}
 .op-card img{width:min(62vw,280px);height:auto}
 .op-bar{width:42px;height:3px;border-radius:2px;background:#8bcfb2}
 .op-tag{margin:0;font-size:clamp(12px,3vw,15px);font-weight:700;letter-spacing:.16em;color:#315f53;line-height:1.7}
 .op-sub{margin:0;font-size:10px;font-weight:700;letter-spacing:.34em;color:#6f8a7e}
-.op-skip{position:absolute;right:18px;bottom:14px;z-index:6;font-size:10px;letter-spacing:.2em;color:#596e64}
-@keyframes op-in{from{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) rotate(calc(var(--r) * 3)) scale(.8)}to{opacity:1;transform:translate(-50%,-50%) rotate(var(--r)) scale(1)}}
-@keyframes op-float{from{transform:translateY(-5px)}to{transform:translateY(6px)}}
+.op-start{margin-top:6px;padding:11px 30px;border-radius:999px;background:#315f53;color:#fff;font-size:12px;font-weight:700;letter-spacing:.3em;opacity:0;animation:op-fade .6s ease 1.8s forwards,op-pulse 1.8s ease-in-out 2.4s infinite}
+@keyframes op-wall-in{to{opacity:1;transform:rotate(-9deg) scale(1)}}
+@keyframes op-slide{from{transform:translateY(0)}to{transform:translateY(-50%)}}
 @keyframes op-card{to{opacity:1;filter:none;transform:translate(-50%,-50%) scale(1)}}
-@keyframes op-failsafe{to{visibility:hidden;pointer-events:none}}
+@keyframes op-fade{to{opacity:1}}
+@keyframes op-pulse{0%,100%{box-shadow:0 0 0 0 rgba(49,95,83,.45)}60%{box-shadow:0 0 0 14px rgba(49,95,83,0)}}
 @media (prefers-reduced-motion:reduce){html.op-on #opening{display:none}html.op-on body{overflow:auto}}
