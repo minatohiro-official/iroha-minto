@@ -16,7 +16,7 @@ html.op-on #opening.op-out{opacity:0;transform:scale(1.06);pointer-events:none}
 .op-card img{width:min(62vw,280px);height:auto}
 .op-bar{width:42px;height:3px;border-radius:2px;background:#8bcfb2}
 .op-tag{margin:0;font-size:clamp(12px,3vw,15px);font-weight:700;letter-spacing:.16em;color:#315f53;line-height:1.7}
-.op-sub{margin:0;font-size:10px;font-weight:700;letter-spacing:.34em;color:#6f8a7e}
+.op-sub{margin:0;font-size:10px;font-weight:700;letter-spacing:.34em;color:#6f8a7e}.op-sub b{display:block;margin-bottom:6px;font-size:17px;letter-spacing:.2em;color:#315F53}
 .op-start{margin-top:6px;padding:11px 30px;border-radius:999px;background:#315f53;color:#fff;font-size:12px;font-weight:700;letter-spacing:.3em;opacity:0;animation:op-fade .6s ease 1.8s forwards,op-pulse 1.8s ease-in-out 2.4s infinite}
 @keyframes op-wall-in{to{opacity:1;transform:rotate(-9deg) scale(1)}}
 @keyframes op-slide{from{transform:translateY(0)}to{transform:translateY(calc(-1 * var(--loop,0px)))}}
