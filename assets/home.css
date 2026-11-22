@@ -101,3 +101,15 @@
 .site-feature-copy .example-label{display:block;margin:0 0 8px;font-size:12px;color:var(--muted)}
 .site-feature-image.top{position:relative;overflow:hidden;min-height:0}
 .site-feature-image.top img{position:absolute;inset:15px;width:calc(100% - 30px);height:calc(100% - 30px)}
+
+.showcase-phone[role=button]{cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .2s}
+.showcase-phone[role=button]:hover{transform:translateY(-4px)}
+.showcase-phone[role=button]:focus-visible{outline:3px solid #315F53;outline-offset:4px}
+.site-dlg{border:0;border-radius:20px;padding:24px 22px 20px;width:min(86vw,340px);box-shadow:0 20px 60px rgba(0,0,0,.3);color:#234b40;text-align:center}
+.site-dlg::backdrop{background:rgba(20,40,34,.5)}
+.site-dlg-t{margin:0 0 8px;font-size:1.05rem;font-weight:800;line-height:1.5}
+.site-dlg-s{margin:0 0 18px;font-size:.82rem;color:#64736b;line-height:1.6}
+.site-dlg-b{display:flex;gap:10px}
+.site-dlg-b>*{flex:1;padding:12px 0;border-radius:999px;font:inherit;font-weight:700;font-size:.95rem;text-decoration:none;cursor:pointer}
+.site-dlg-b button{border:1px solid #c5d6cd;background:#fff;color:#234b40}
+.site-dlg-b a{border:1px solid #315F53;background:#315F53;color:#fff}
