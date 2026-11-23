@@ -113,3 +113,11 @@
 .site-dlg-b>*{flex:1;padding:12px 0;border-radius:999px;font:inherit;font-weight:700;font-size:.95rem;text-decoration:none;cursor:pointer}
 .site-dlg-b button{border:1px solid #c5d6cd;background:#fff;color:#234b40}
 .site-dlg-b a{border:1px solid #315F53;background:#315F53;color:#fff}
+
+.tags-more{margin:-8px 0 22px}
+.tags-more>summary{display:inline-flex;align-items:center;gap:6px;cursor:pointer;list-style:none;font-size:12px;font-weight:700;color:var(--green);padding:6px 4px}
+.tags-more>summary::-webkit-details-marker{display:none}
+.tags-more>summary::after{content:"＋";font-weight:700}
+.tags-more[open]>summary::after{content:"－"}
+.tags-more[open]>summary{margin-bottom:8px}
+.tags-more .work-tags{margin:0}
