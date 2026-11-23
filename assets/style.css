@@ -142,3 +142,5 @@
 .legal-table td{min-width:0}
 .legal-table th,.legal-table td{overflow-wrap:anywhere;font-size:14px}
 @media (max-width:700px){.legal-table th,.legal-table td{padding-left:16px;padding-right:16px;font-size:14px}}
+
+.work-shots{margin-top:34px;padding-top:26px;border-top:1px dashed var(--line)}.work-shots h4{font-size:13px;margin-bottom:16px}.work-shots-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:860px}.work-shots figure{margin:0}.work-shots img{display:block;width:100%;height:auto;aspect-ratio:400/711;object-fit:cover;object-position:top;border-radius:16px;border:3px solid #1f3d34;background:#fff}.work-shots figcaption{margin-top:10px;text-align:center}.work-shots figcaption b{display:block;font-size:13px;color:var(--green)}.work-shots figcaption span{display:block;margin-top:3px;font-size:11px;color:var(--muted);line-height:1.6}@media(max-width:620px){.work-shots-row{gap:8px}.work-shots img{border-width:2px;border-radius:10px}.work-shots figcaption b{font-size:11px}.work-shots figcaption span{font-size:10px}}
