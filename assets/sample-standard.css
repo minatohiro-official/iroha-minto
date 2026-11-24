@@ -126,3 +126,10 @@ p,dd,.t,.lead{text-wrap:pretty;line-break:strict}
 .cards3>div{padding:22px 24px}
 section{padding:60px 0}
 .hero{padding:64px 0 88px}
+/* お問い合わせの文字位置を左にそろえる */
+.contact{text-align:left;padding:36px clamp(20px,5vw,44px)}
+.contact h2,.contact p{text-align:left}
+form.f{max-width:none;margin:0}
+form.f button{align-self:flex-start}
+#sent{text-align:left!important}
+form.f ::placeholder{color:#8e98b8;opacity:1}
