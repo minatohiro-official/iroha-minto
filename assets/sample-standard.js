@@ -11,3 +11,14 @@ if(bar)bar.style.width=(m>0?y/m*100:0)+'%';
 if(moon&&!reduce)moon.style.transform='translateY('+(y*0.18)+'px)'}
 window.addEventListener('scroll',f,{passive:true});f();
 })();
+(function(){
+var bs=document.querySelectorAll('.filter button'),ss=document.querySelectorAll('.song[data-g]');
+bs.forEach(function(b){b.addEventListener('click',function(){
+bs.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+var g=b.getAttribute('data-g');
+ss.forEach(function(s){s.hidden=!(g==='all'||s.getAttribute('data-g')===g)});
+var c=document.getElementById('cnt');if(c)c.textContent=document.querySelectorAll('.song[data-g]:not([hidden])').length+'曲';
+})});
+var f=document.querySelector('form.f');
+if(f)f.addEventListener('submit',function(e){e.preventDefault();var m=document.getElementById('sent');if(m)m.hidden=false});
+})();
